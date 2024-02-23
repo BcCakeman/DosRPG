@@ -79,14 +79,21 @@ const eventFiles = fs.readdirSync(eventsPath).filter(file => file.endsWith('.js'
 var eventsCount = 0;
 
 for (const file of eventFiles) {
-    const filePath = path.join(eventsPath, file);
-    const event = require(filePath);
-    if (event.once) {
-        client.once(event.name, (...args) => event.execute(...args));
-    } else {
-        client.on(event.name, (...args) => event.execute(...args));
-    }
-    eventsCount++;
+    const filePath = ("file:///" + path.join(eventsPath, file));
+    await import(filePath)
+        .then((result) => {
+            const event = result.default;
+
+            if (event.once) {
+                client.once(event.name, (...args) => event.execute(...args));
+            } else {
+                client.on(event.name, (...args) => event.execute(...args));
+            }
+            eventsCount++;
+        })
+        .catch((error) => {
+            console.error('Error during dynamic module import:', error);
+        });;
 }
 console.log(`Loaded ${eventsCount} events.`)
 
