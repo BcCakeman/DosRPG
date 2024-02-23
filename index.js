@@ -34,7 +34,6 @@ for (const folder of commandFolders) {
         await import(filePath)
             .then((result) => {
                 const command = result.default;
-                console.log(command);
                 // Set a new item in the Collection with the key as the command name and the value as the exported module
                 if ('data' in command && 'execute' in command) {
                     client.commands.set(command.data.name, command);

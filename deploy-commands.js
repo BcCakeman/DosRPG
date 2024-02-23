@@ -28,7 +28,6 @@ for (const folder of commandFolders) {
 		await import(filePath)
 			.then((result) => {
 				const command = result.default;
-				console.log(command);
 				if ('data' in command && 'execute' in command) {
 					commands.push(command.data.toJSON());
 				} else {
