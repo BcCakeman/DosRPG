@@ -1,0 +1,54 @@
+{
+    "name": "test-game-with-flags",
+    "description": "This game sucks.",
+
+    "flags": {
+        "hasKey": "0",
+        "hasCrowbar": "0"
+    },
+
+    "level": {
+        "0": {
+            "name": "start",
+            "text": "You are in the level. It is very spooky. You see stair and door. (poggers)",
+            "options": [
+                ["Go through the door", "2"],
+                ["Go up the stairs", "1"]
+            ]
+        },
+        "1": {
+            "name": "upstairs",
+            "text": "You walk up the stairs. Very impressive. There is nothing up here.",
+            "options": [
+                ["Go down the stairs", "4"]
+            ]
+        },
+        "2": {
+            "name": "through-door",
+            "text": "You go through the door. It is an empty room.",
+            "options": [
+                {
+                    "text": "Go back to the entrance",
+                    "requiredFlags": {
+                        "hasKey": "1"
+                    },
+
+                    "actions": {
+                      "setRoom": "0",
+                      "setFlag": {
+                          "flag": "beenThroughDoor",
+                          "value": "true"
+                       }
+                    }
+                }
+            ]
+        },
+        "4": {
+            "name": "fallen-down-stairs",
+            "text": "You fall down the stairs and die. I'm literally lmaoing my ass off.",
+            "options": [
+                ["Restart", "0"]
+            ]
+        }
+    }
+}
