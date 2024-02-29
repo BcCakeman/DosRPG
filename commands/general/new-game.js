@@ -1,4 +1,5 @@
 import { SlashCommandBuilder } from 'discord.js';
+import {buildResponse} from '../../utils/buildResponse.js'
 
 const data = new SlashCommandBuilder()
     .setName('new-game')
@@ -9,7 +10,18 @@ const data = new SlashCommandBuilder()
 			.setRequired(true));
 
 async function execute(client, interaction) {
-    interaction.reply('ha lol there are no games :P');
+    var input = interaction.options.getString('game');
+
+    for(const game of client.games){
+        if(input === game.name || input == game.Id){
+            
+            //interaction.reply('woe, you chose an actual game lmao\n' + JSON.stringify(game));
+            interaction.reply(await buildResponse(game, null));
+            return;
+        }
+    }
+
+    interaction.reply('you didnt choose a game you pathetic waste of matter');
 }
 
 export default {

@@ -1,7 +1,3 @@
-// These lines make "require" available
-import { createRequire } from "module";
-const require = createRequire(import.meta.url);
-
 // Require the necessary discord.js classes
 import fs from 'node:fs';
 import path from 'node:path';
@@ -17,6 +13,22 @@ const client = new Client({
         GatewayIntentBits.Guilds,
     ]
 });
+
+//*****************************LOAD GAMES********************************/
+var games = [];
+const gamesPath = path.join(__dirname, 'games');
+const gameFiles = fs.readdirSync(gamesPath).filter(file => file.endsWith('.json'));
+var gamesCount = 0;
+
+for (const file of gameFiles) {
+    const game = path.join(gamesPath, file);
+    var gameJson = JSON.parse(fs.readFileSync(game));
+    gameJson.Id = "" + gamesCount;
+    games.push(gameJson);
+    gamesCount++;
+}
+client.games = games;
+console.log(`Loaded ${gamesCount} games.`)
 
 //*****************************LOAD COMMANDS********************************/
 //Set client commands from js files in the commands folder

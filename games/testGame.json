@@ -1,36 +1,54 @@
 {
     "name": "test-game",
     "description": "This game sucks.",
-
-    "level": {
-        "0": {
+    "level": [
+        {
+            "id": "0",
             "name": "start",
             "text": "You are in the level. It is very spooky. You see stair and door. (poggers)",
             "options": [
-                ["Go through the door", "2"],
-                ["Go up the stairs", "1"]
+                [
+                    "Go through the door",
+                    "2"
+                ],
+                [
+                    "Go up the stairs",
+                    "1"
+                ]
             ]
         },
-        "1": {
+        {
+            "id": "1",
             "name": "upstairs",
             "text": "You walk up the stairs. Very impressive. There is nothing up here.",
             "options": [
-                ["Go down the stairs", "4"]
+                [
+                    "Go down the stairs",
+                    "4"
+                ]
             ]
         },
-        "2": {
+        {
+            "id": "2",
             "name": "through-door",
             "text": "You go through the door. It is an empty room.",
             "options": [
-                ["Go back to the entrance", "0"]
+                [
+                    "Go back to the entrance",
+                    "0"
+                ]
             ]
         },
-        "4": {
+        {
+            "id": "4",
             "name": "fallen-down-stairs",
             "text": "You fall down the stairs and die. I'm literally lmaoing my ass off.",
             "options": [
-                ["Restart", "0"]
+                [
+                    "Restart",
+                    "0"
+                ]
             ]
         }
-    }
+    ]
 }
