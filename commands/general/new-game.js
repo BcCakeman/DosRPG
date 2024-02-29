@@ -1,5 +1,6 @@
 import { SlashCommandBuilder } from 'discord.js';
 import {buildResponse} from '../../utils/buildResponse.js'
+import games from '../../utils/gamesLoader.js';
 
 const data = new SlashCommandBuilder()
     .setName('new-game')
@@ -12,11 +13,11 @@ const data = new SlashCommandBuilder()
 async function execute(client, interaction) {
     var input = interaction.options.getString('game');
 
-    for(const game of client.games){
-        if(input === game.name || input == game.Id){
+    for(const game of games){
+        if(input === game.name || input == game.id){
             
             //interaction.reply('woe, you chose an actual game lmao\n' + JSON.stringify(game));
-            interaction.reply(await buildResponse(game, null));
+            interaction.reply(buildResponse(game, null));
             return;
         }
     }

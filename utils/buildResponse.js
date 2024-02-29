@@ -1,12 +1,12 @@
 import { Events, ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder } from 'discord.js';
 
-export async function buildResponse(game, saveState) {
+export function buildResponse(game, saveState) {
 
     const titleText = game.name;
     var sceneDescription = "default description";
     const spacerField = {
         name: " ",
-        value: '\nSaveState:',
+        value: '.\n.\n.\n.\nSaveState:',
         inline: false
     }
     var footer = {

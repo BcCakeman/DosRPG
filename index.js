@@ -7,6 +7,8 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+import games from './utils/gamesLoader.js';
+
 //*****************************CREATE CLIENT********************************/
 const client = new Client({
     intents: [
@@ -15,20 +17,8 @@ const client = new Client({
 });
 
 //*****************************LOAD GAMES********************************/
-var games = [];
-const gamesPath = path.join(__dirname, 'games');
-const gameFiles = fs.readdirSync(gamesPath).filter(file => file.endsWith('.json'));
-var gamesCount = 0;
-
-for (const file of gameFiles) {
-    const game = path.join(gamesPath, file);
-    var gameJson = JSON.parse(fs.readFileSync(game));
-    gameJson.Id = "" + gamesCount;
-    games.push(gameJson);
-    gamesCount++;
-}
-client.games = games;
-console.log(`Loaded ${gamesCount} games.`)
+console.log(`Loaded ${games.length} games.`);
+console.log(games);
 
 //*****************************LOAD COMMANDS********************************/
 //Set client commands from js files in the commands folder
