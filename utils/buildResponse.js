@@ -6,7 +6,7 @@ export function buildResponse(game, saveState) {
     var sceneDescription = "default description";
     const spacerField = {
         name: " ",
-        value: '.\n.\n.\n.\nSaveState:',
+        value: '⠀\n⠀\n⠀\n⠀\nSaveState:',    //<⠀> is an invisible character that is NOT whitespace. This is to keep discord from automatically deleting the spacer lines in the embed.
         inline: false
     }
     var footer = {
