@@ -1,6 +1,7 @@
 # immediate features
 -custom variables in games
 -saveState encoding to bit flags
+-allow external JSON for game development and testing
 
 
 # big potential future features
