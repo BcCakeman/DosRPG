@@ -18,7 +18,6 @@ const client = new Client({
 
 //*****************************LOAD GAMES********************************/
 console.log(`Loaded ${games.length} games.`);
-console.log(games);
 
 //*****************************LOAD COMMANDS********************************/
 //Set client commands from js files in the commands folder

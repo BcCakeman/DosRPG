@@ -11,8 +11,7 @@ export default {
         //Interaction response for the optionSelector
         if (interaction?.isStringSelectMenu() && interaction?.customId === "optionSelect") {
 
-            const oldEmbed = interaction.message.embeds[0];
-            var oldSaveState = JSON.parse(zlib.inflateSync(Buffer.from(oldEmbed.footer.text, 'base64')).toString());
+            var oldSaveState = JSON.parse(zlib.inflateSync(Buffer.from(interaction.message.content, 'base64')).toString());
             var newSaveState = oldSaveState;
 
             for (const game of games) {
@@ -31,11 +30,6 @@ export default {
                     }
                 }
             }
-        }
-
-        //Interaction response for the Save State button
-        if(interaction.customId === "viewSave"){
-            
         }
     }
 }
