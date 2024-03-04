@@ -1,6 +1,5 @@
 # immediate features
 -custom variables in games
--allow external JSON for game development and testing
 
 
 # big potential future features

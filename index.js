@@ -7,7 +7,7 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-import games from './utils/gamesLoader.js';
+import { games, refreshGames } from './utils/gamesLoader.js';
 
 //*****************************CREATE CLIENT********************************/
 const client = new Client({
@@ -17,6 +17,7 @@ const client = new Client({
 });
 
 //*****************************LOAD GAMES********************************/
+refreshGames();
 console.log(`Loaded ${games.length} games.`);
 
 //*****************************LOAD COMMANDS********************************/
