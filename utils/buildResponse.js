@@ -1,5 +1,5 @@
 import { Events, StringSelectMenuBuilder, StringSelectMenuOptionBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder } from 'discord.js';
-import zlib from 'zlib';
+import { encode } from './saveEncoder.js';
 
 export function buildResponse(game, saveState) {
 
@@ -43,7 +43,7 @@ export function buildResponse(game, saveState) {
         .setDescription(sceneDescription);
 
     return ({
-        content: `||${(zlib.deflateSync(JSON.stringify(saveState))).toString('base64')}||`,
+        content: `||${encode(saveState)}||`,
         embeds: [embed],
         components: [selectRow]
     });

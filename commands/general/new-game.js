@@ -1,7 +1,7 @@
 import { SlashCommandBuilder } from 'discord.js';
 import { buildResponse } from '../../utils/buildResponse.js'
 import games from '../../utils/gamesLoader.js';
-import zlib from 'zlib';
+import { decode } from '../../utils/saveEncoder.js';
 
 const data = new SlashCommandBuilder()
     .setName('new-game')
@@ -17,12 +17,12 @@ const data = new SlashCommandBuilder()
 
 async function execute(client, interaction) {
     var gameId = interaction.options.getString('game');
-    var saveState = interaction.options.getString('save-code');
+    var saveState = decode(interaction.options.getString('save-code'));
 
     for (const game of games) {
         if (gameId === game.name || gameId == game.id) {
 
-            interaction.reply(buildResponse(game, JSON.parse(zlib.inflateSync(Buffer.from(saveState, 'base64')).toString())));
+            interaction.reply(buildResponse(game, saveState));
             return;
         }
     }
