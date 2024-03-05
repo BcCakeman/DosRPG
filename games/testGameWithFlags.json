@@ -1,0 +1,74 @@
+{
+    "name": "test-game-with-varaibles",
+    "description": "This game sucks.",
+    "format": "v2",
+    "variables": {
+        "hasKey": "0"
+    },
+    "level": [
+        {
+            "id": "0",
+            "name": "start",
+            "text": "You are in the level. It is very spooky. You see a red door and a blue door.",
+            "options": [
+                {
+                    "text": "Go through the red door",
+                    "requireVariables": {
+                        "hasKey": "0"
+                    },
+                    "actions": {
+                        "setText": "It's locked"
+                    }
+                },
+                {
+                    "text": "Unlock and go through the red door",
+                    "requireVariables": {
+                        "hasKey": "1"
+                    },
+                    "actions": {
+                        "setScene": "2"
+                    }
+                },
+                {
+                    "text": "Go through the blue door", 
+                    "actions": {
+                        "setScene": "1"
+                    }
+                }
+            ]
+        },
+        {
+            "id": "1",
+            "name": "through-blue-door",
+            "text": "You go through the blue door. There is a key on the floor.",
+            "options": [
+                {
+                    "text": "Pick up the key",
+                    "requireVariables": {
+                        "hasKey": "1"
+                    },
+                    "actions": {
+                        "setScene": "0",
+                        "setVariables": {
+                            "hasKey": "1"
+                        }
+                    }
+                },
+                {
+                    "text": "Go back to the entrance", 
+                    "actions": {
+                        "setScene": "0"
+                    }
+                }
+            ]
+        },
+        {
+            "id": "2",
+            "name": "youwin",
+            "text": "YOU WON!!!???? HOW ARE YOU SO SMART AT THIS??? UWU!!!!",
+            "options": [
+
+            ]
+        }
+    ]
+}
