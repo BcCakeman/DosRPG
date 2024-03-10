@@ -1,8 +1,7 @@
 {
-    "name": "test-game",
+    "name": "Example Game",
     "description": "This game sucks.",
     "format": "v1",
-
     "level": [
         {
             "id": "0",

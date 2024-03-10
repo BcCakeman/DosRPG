@@ -14,10 +14,11 @@ export function buildResponse(game, saveState, options, text) {
             sceneDescription = text ? text : scene.text;
 
             for (let i = 0; i < options.length; i++) {
+                if (!options[i]) continue;
                 const newOption = new StringSelectMenuOptionBuilder()
-                    .setLabel(options[i][0])
+                    .setLabel(options[i])
                     .setValue("" + i);
-                    menuOptions.push(newOption);
+                menuOptions.push(newOption);
             }
         }
     }

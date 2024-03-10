@@ -1,0 +1,151 @@
+{
+    "name": "Example Game v2",
+    "description": "This game sucks, but it uses variables because it is format v2",
+    "format": "v2",
+    "variables": [
+        [
+            "hasKey",
+            "0"
+        ],
+        [
+            "isStupid",
+            "yes"
+        ]
+    ],
+    "level": [
+        {
+            "id": "0",
+            "name": "start",
+            "text": "You are in the level. It is very spooky. You see a staircase leeding up into a dark passage. There is also a red door and a blue door.",
+            "options": [
+                {
+                    "text": "Go up the stairs",
+                    "actions": [
+                        [
+                            "setScene",
+                            "3"
+                        ]
+                    ]
+                },
+                {
+                    "text": "Go through the red door",
+                    "requiredVariables": [
+                        [
+                            "hasKey",
+                            "0"
+                        ]
+                    ],
+                    "actions": [
+                        [
+                            "setText",
+                            "It's locked"
+                        ]
+                    ]
+                },
+                {
+                    "text": "Unlock and go through the red door",
+                    "requiredVariables": [
+                        [
+                            "hasKey",
+                            "1"
+                        ]
+                    ],
+                    "actions": [
+                        [
+                            "setScene",
+                            "2"
+                        ]
+                    ]
+                },
+                {
+                    "text": "Go through the blue door",
+                    "actions": [
+                        [
+                            "setScene",
+                            "1"
+                        ]
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "1",
+            "name": "through-blue-door",
+            "text": "You go through the blue door. There is a key on the floor.",
+            "options": [
+                {
+                    "text": "Pick up the key",
+                    "requiredVariables": [
+                        [
+                            "hasKey",
+                            "0"
+                        ]
+                    ],
+                    "actions": [
+                        [
+                            "setText",
+                            "You picked up the key!"
+                        ],
+                        [
+                            "setVariable",
+                            [
+                                "hasKey",
+                                "1"
+                            ]
+                        ]
+                    ]
+                },
+                {
+                    "text": "Go back to the entrance",
+                    "actions": [
+                        [
+                            "setScene",
+                            "0"
+                        ]
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "2",
+            "name": "youwin",
+            "text": "YOU WON!!!???? HOW ARE YOU SO SMART AT THIS??? UWU!!!!",
+            "options": [
+                {
+                    "text": "Don't click this.",
+                    "actions": [
+                        [
+                            "setText",
+                            "You got greedy and died."
+                        ]
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "3",
+            "name": "upstairs",
+            "text": "You walk up through the dark stairs. Eventually it opens up onto a balcony. The view is very nice here.",
+            "options": [
+                {
+                    "text": "Jump off the balcony",
+                    "actions": [
+                        [
+                            "setText",
+                            "You don't jump off the balcony because you realize that would actually fucking kill you."
+                        ]
+                    ]
+                },
+                {
+                    "text": "Go back to the entrance",
+                    "actions": [
+                        [
+                            "setScene",
+                            "0"
+                        ]
+                    ]
+                }
+            ]
+        }
+    ]
+}
