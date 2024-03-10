@@ -43,7 +43,14 @@ function interpreterV1(game, saveState, interaction) {
                 var newSaveState = saveState;
                 newSaveState.currentScene = option[1];
 
-                return buildResponse(game, newSaveState, scene.options);
+                var newOptions = null;
+                for (const newScene of game.level) {
+                    if (newSaveState.currentScene === newScene.id) {
+                        newOptions = newScene.options;
+                     }
+                }
+
+                return buildResponse(game, newSaveState, newOptions);
             }
         }
     }
