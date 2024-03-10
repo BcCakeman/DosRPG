@@ -11,7 +11,8 @@ async function execute(client, interaction) {
     for(const game of games){
         outStr += `Name: ${game.name}\n`;
         outStr += `Description: ${game.description}\n`;
-        outStr += `ID: ${game.id}\n\n`;
+        outStr += `ID: ${game.id}\n`;
+        outStr += `Format: ${game.format}\n\n`;
     }
     interaction.reply(outStr);
 }

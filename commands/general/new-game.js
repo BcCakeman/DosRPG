@@ -2,6 +2,7 @@ import { SlashCommandBuilder } from 'discord.js';
 import { buildResponse } from '../../utils/buildResponse.js'
 import { games}  from '../../utils/gamesLoader.js';
 import { decode } from '../../utils/saveEncoder.js';
+import { interpreter } from '../../utils/gameInterpreter.js';
 
 const data = new SlashCommandBuilder()
     .setName('new-game')
@@ -19,11 +20,11 @@ async function execute(client, interaction) {
     var gameId = interaction.options.getString('game');
     var saveState = decode(interaction.options.getString('save-code'));
 
-    console.log(games);
     for (const game of games) {
         if (gameId === game.name || gameId == game.id) {
-
-            interaction.reply(buildResponse(game, saveState));
+            
+            console.log(`${interaction.user.username} started a new game: ${game.name}`);
+            interaction.reply(interpreter(game, saveState));
             return;
         }
     }

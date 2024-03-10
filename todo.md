@@ -1,6 +1,5 @@
 # immediate features
--custom variables in games
-
+-resetVariables action?
 
 # big potential future features
 -gpt implementation

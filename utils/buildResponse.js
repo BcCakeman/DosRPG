@@ -1,31 +1,24 @@
 import { Events, StringSelectMenuBuilder, StringSelectMenuOptionBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder } from 'discord.js';
 import { encode } from './saveEncoder.js';
 
-export function buildResponse(game, saveState) {
-
-    //If we are given so saveState, then it is a new game and we must define the initial saveState
-    if (!saveState) {
-        saveState = {
-            gameId: "" + game.id,
-            currentScene: "0"
-        };
-    }
+export function buildResponse(game, saveState, options, text) {
 
     //Set some embed defaults
     const titleText = game.name;
     var sceneDescription = "default description";
 
     //Generate Options Selector and set sceneDescription
-    var options = [];
+    var menuOptions = [];
     for (const scene of game.level) {
         if (scene.id === saveState.currentScene) {
-            sceneDescription = scene.text;
+            sceneDescription = text ? text : scene.text;
 
-            for (let i = 0; i < scene.options.length; i++) {
+            for (let i = 0; i < options.length; i++) {
+                if (!options[i]) continue;
                 const newOption = new StringSelectMenuOptionBuilder()
-                    .setLabel(scene.options[i][0])
+                    .setLabel(options[i])
                     .setValue("" + i);
-                options.push(newOption);
+                menuOptions.push(newOption);
             }
         }
     }
@@ -33,7 +26,7 @@ export function buildResponse(game, saveState) {
     const optionSelect = new StringSelectMenuBuilder()
         .setCustomId('optionSelect')
         .setPlaceholder('Make a selection!')
-        .addOptions(options);
+        .addOptions(menuOptions);
     selectRow.addComponents(optionSelect);
 
     //Create Embed
