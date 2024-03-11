@@ -5,7 +5,6 @@
     "level": [
         {
             "id": "0",
-            "name": "start",
             "text": "You are in the level. It is very spooky. You see stair and door. (poggers)",
             "options": [
                 [
@@ -20,7 +19,6 @@
         },
         {
             "id": "1",
-            "name": "upstairs",
             "text": "You walk up the stairs. Very impressive. There is nothing up here.",
             "options": [
                 [
@@ -31,7 +29,6 @@
         },
         {
             "id": "2",
-            "name": "through-door",
             "text": "You go through the door. It is an empty room.",
             "options": [
                 [
@@ -42,7 +39,6 @@
         },
         {
             "id": "4",
-            "name": "fallen-down-stairs",
             "text": "You fall down the stairs and die. I'm literally lmaoing my ass off.",
             "options": [
                 [
